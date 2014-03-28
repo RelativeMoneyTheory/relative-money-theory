@@ -5,9 +5,15 @@ REM Command file for Sphinx documentation
 if "%SPHINXBUILD%" == "" (
 	set SPHINXBUILD=sphinx-build
 )
-set BUILDDIR=build
-set ALLSPHINXOPTS=-d %BUILDDIR%/doctrees %SPHINXOPTS% source
-set I18NSPHINXOPTS=%SPHINXOPTS% source
+if "%2" == "en_US" (
+	set LANGUAGEDIR=en_US.UTF-8
+) else (
+	set LANGUAGEDIR=fr_FR.UTF-8
+)
+
+set BUILDDIR=build/%LANGUAGEDIR%
+set ALLSPHINXOPTS=-d %BUILDDIR%/doctrees %SPHINXOPTS% source/%LANGUAGEDIR%
+set I18NSPHINXOPTS=%SPHINXOPTS% source/%LANGUAGEDIR%
 if NOT "%PAPER%" == "" (
 	set ALLSPHINXOPTS=-D latex_paper_size=%PAPER% %ALLSPHINXOPTS%
 	set I18NSPHINXOPTS=-D latex_paper_size=%PAPER% %I18NSPHINXOPTS%
@@ -17,7 +23,7 @@ if "%1" == "" goto help
 
 if "%1" == "help" (
 	:help
-	echo.Please use `make ^<target^>` where ^<target^> is one of
+	echo.Please use `make ^<target^> ^<language^>` where ^<target^> is one of
 	echo.  html       to make standalone HTML files
 	echo.  dirhtml    to make HTML files named index.html in directories
 	echo.  singlehtml to make a single large HTML file
@@ -35,6 +41,9 @@ if "%1" == "help" (
 	echo.  changes    to make an overview over all changed/added/deprecated items
 	echo.  linkcheck  to check all external links for integrity
 	echo.  doctest    to run all doctests embedded in the documentation if enabled
+	echo.and where ^<language^> is one of the following ISO values :
+	echo.  fr_FR      French version (default)
+	echo.  en_US      English version
 	goto end
 )
 
