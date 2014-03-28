@@ -2,3 +2,5 @@ numpy
 numpydoc
 sphinx
 ipython
+python-dateutil
+pyparsing
