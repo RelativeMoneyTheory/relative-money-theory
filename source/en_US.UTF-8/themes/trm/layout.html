@@ -1,0 +1,79 @@
+{%- extends "basic/layout.html" %}
+{%- block htmltitle %}
+  {{ super() }}
+  <link media="screen" href="{{ pathto('_static/bootstrap.css', 1) }}" type= "text/css" rel="stylesheet" />
+{% endblock %}
+{% block relbar1 %}{% endblock %}
+{% block relbar2 %}{% endblock %}
+{%- block content %}
+<div class="top-navbar-fixed">
+    <div class="container">
+        <div class="row top-navbar">
+            <div class="span6 left">
+                Book « <a href="index.html">Relative Money Theory v2.718</a> »
+            </div><!-- span6 -->
+            <div class="span4 right"><div>
+    <a href="index.html">summary</a> |
+    {%- if prev %}
+    <a 
+        href="{{ prev.link|e }}" 
+        title="{{ _('previous chapter') }}"
+        >previous</a>
+    {%- endif %}
+    {%- if prev and next %}
+    |
+    {%- endif %}
+    {%- if next %}
+    <a 
+        href="{{ next.link|e }}" 
+        title="{{ _('next chapter') }}"
+        >next</a>
+    {%- endif %}
+            </div></div><!-- span4 -->
+        </div><!-- row -->
+    </div><!-- container -->
+</div><!-- top-navbar-fixed -->
+<div class="container" style="margin-top: 50px; margin-bottom: 50px">
+    <div class="row">
+        <div class="span10 hyphenate text" lang="fr">
+{% if pagename == 'index' %}
+<div class="book-title">
+    <h1>{{ docstitle }}</h1>
+
+    <span>© Stéphane Laborde 2012 (GNU Public Licence V3)</span>
+
+    <p style="color: red; text-align: center;">Warning, the transformation of original <a href="http://www.creationmonetaire.info/2011/06/theorie-relative-de-la-monnaie-20.html">book</a> to the <a href="http://fr.wikipedia.org/wiki/ReStructuredText">ReStructuredText</a>/<a href="http://fr.wikipedia.org/wiki/Sphinx_%28g%C3%A9n%C3%A9rateur_de_documentation%29">Sphinx</a> format is not totally finished !</p>
+</div>
+{%- endif %}
+            {% block body %} {% endblock %}
+        </div><!-- span10 -->
+    </div><!-- row -->
+</div><!-- container -->
+{% endblock %}
+{% block footer %}
+<!--
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+-->
+<script src="_static/Hyphenator.js" type="text/javascript" charset="utf-8"></script>
+<script src="_static/en.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript" charset="utf-8">
+Hyphenator.config({
+    displaytogglebox : true,
+    minwordlength : 4,
+    defaultlanguage: 'en-us'
+});
+Hyphenator.run(); 
+</script>
+
+<div class="container footer">
+    <div class="row">
+        <div class="span6 left">
+<a href="TheorieRelative.pdf">Version PDF</a> |
+<a href="https://github.com/RelativeMoneyTheory/relative-money-theory">Source code</a>
+        </div><!-- span6 -->
+        <div class="span4 right">
+© Stéphane Laborde 2012 (GNU Public Licence V3)
+        </div><!-- span4 -->
+    </div><!-- row -->
+</div><!-- container -->
+{% endblock %}
