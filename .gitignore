@@ -1,7 +1,13 @@
 .installed.cfg
 .~lock*
 bin/
-build/
+build/**/doctrees/
+build/**/plot_directive/
+build/**/html/_sources/
+build/**/html/**/.buildinfo
+build/**/html/**/*.py
+build/**/html/**/*.inv
+build/**/html/**/*.pdf
 develop-eggs/
 .Python
 TRM_2_718_b.odt
