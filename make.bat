@@ -42,7 +42,7 @@ if "%1" == "help" (
 	echo.  linkcheck  to check all external links for integrity
 	echo.  doctest    to run all doctests embedded in the documentation if enabled
 	echo.and where ^<language^> is one of the following ISO values :
-	echo.  fr_FR      French version (default)
+	echo.  fr_FR      French version ^(default^)
 	echo.  en_US      English version
 	goto end
 )
